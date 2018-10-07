@@ -1,0 +1,342 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FORMULARIOS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <script>
+    $(document).ready(function () {
+      $("#diviniciarsesion").hide();
+      $("#divProfesor").hide();
+      $("#divAsignatura").hide();
+      $("#divImparte").hide();
+      $("#btnProfesor").hide();
+      $("#btnAsignatura").hide();
+      $("#btnImparte").hide();
+    });
+    function mostrariniciosesion() {
+      $("#diviniciarsesion").show();
+      $("#divProfesor").hide();
+      $("#divAsignatura").hide();
+      $("#divImparte").hide();
+    }
+    function mostrarprofesor() {
+      $("#diviniciarsesion").hide();
+      $("#divProfesor").show();
+      $("#divAsignatura").hide();
+      $("#divImparte").hide();
+    }
+    function mostrarasignatura() {
+      $("#diviniciarsesion").hide();
+      $("#divProfesor").hide();
+      $("#divAsignatura").show();
+      $("#divImparte").hide();
+    }
+    function mostrarimparte() {
+      $("#diviniciarsesion").hide();
+      $("#divProfesor").hide();
+      $("#divAsignatura").hide();
+      $("#divImparte").show();
+    }
+
+    //
+    function iniciarSesion() {
+      if ($("#Usuario").val() !== "" && $("#password").val() !== "") {
+        if (iniciarSesionDB($("#Usuario").val(), $("#password").val())) {
+          $("#btnIiniciarSesion").hide();
+          $("#btnProfesor").show();
+          $("#btnAsignatura").show();
+          $("#btnImparte").show();
+          $("#diviniciarsesion").hide();
+        }
+
+      } else {
+        alert("Usuario o contraseña vacio");
+      }
+    }
+
+    function iniciarSesionDB(miUsuario, miClave) {
+      return true;
+    }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <button id="btnIiniciarSesion" type="button" class="btn btn-info" onclick="mostrariniciosesion();">Iniciar Sesion</button>
+        <button id="btnProfesor" type="button" class="btn btn-info" onclick="mostrarprofesor();">Profesor</button>
+        <button id="btnAsignatura" type="button" class="btn btn-info" onclick="mostrarasignatura();">Asignatura</button>
+        <button id="btnImparte" type="button" class="btn btn-info" onclick="mostrarimparte();">Imparte</button>
+    </div>
+
+    <div id="diviniciarsesion">
+        <div class="container">
+            <h2>Inicio de sesion</h2>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="Usuario" type="text" class="form-control" name="Usuario" placeholder="Usuario">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="Contrase�a" placeholder="password">
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="iniciarSesion();">Ingresar</button>
+        </div>
+    </div>
+    <div id="divProfesor">
+        <div class="container">
+            <h1>Formularios profesor</h1>
+            <h2>Crear Profesor</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Nombre_Profe">Nombre del profesor:</label>
+                    <input type="text" class="form-control" id="Nombre_Profe" placeholder="Ingrese nombre del profesor">
+                </div>
+                <div class="form-group">
+                    <label for="Dedicacion">Dedicacion:</label>
+                    <input type="text" class="form-control" id="Dedicacion" placeholder="Ingrese la dedicacion">
+                </div>
+                <div class="form-group">
+                    <label for="Categoria">Categoria:</label>
+                    <input type="text" class="form-control" id="Categoria" placeholder="Ingrese la categoria">
+                </div>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Modificar Profesor</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Nombre_Profe">Nombre del profesor:</label>
+                    <input type="text" class="form-control" id="Nombre_Profe" placeholder="Ingrese nombre del profesor">
+                </div>
+                <div class="form-group">
+                    <label for="Dedicacion">Dedicacion:</label>
+                    <input type="text" class="form-control" id="Dedicacion" placeholder="Ingrese la dedicacion">
+                </div>
+                <div class="form-group">
+                    <label for="Categoria">Categoria:</label>
+                    <input type="text" class="form-control" id="Categoria" placeholder="Ingrese la categoria">
+                </div>
+                <button type="button" class="btn btn-primary">Modificar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Buscar Profesor</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Nombre_Profe">Nombre del profesor:</label>
+                    <input type="text" class="form-control" id="Nombre_Profe" placeholder="Ingrese nombre del profesor">
+                </div>
+                <div class="form-group">
+                    <label for="Dedicacion">Dedicacion:</label>
+                    <input type="text" class="form-control" id="Dedicacion" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="Categoria">Categoria:</label>
+                    <input type="text" class="form-control" id="Categoria" placeholder="">
+                </div>
+                <button type="button" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Eliminar Profesor</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Nombre_Profe">Nombre del profesor:</label>
+                    <input type="text" class="form-control" id="Nombre_Profe" placeholder="Ingrese nombre del profesor que va a eliminar">
+                </div>
+                <button type="button" class="btn btn-primary">Eliminar</button>
+            </form>
+        </div>
+    </div>
+    <div id="divAsignatura">
+        <div class="container">
+            <h1>Formularios Asignatura</h1>
+            <h2>Crear Asignatura</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Codigo_Asignatua">Codigo Asignatura:</label>
+                    <input type="text" class="form-control" id="Codigo_Asignatua" placeholder="Ingrese codigo de la signatra">
+                </div>
+                <div class="form-group">
+                    <label for="Nombre">Nombre Asignatura:</label>
+                    <input type="text" class="form-control" id="Dedicacion" placeholder="Ingrese el nombre de la asignatura">
+                </div>
+                <div class="form-group">
+                    <label for="Centro">Centro:</label>
+                    <input type="text" class="form-control" id="Centro" placeholder="Ingrese el Centro">
+                </div>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Modificar Asignatura</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Codigo_Asignatua">Codigo Asignatura:</label>
+                    <input type="text" class="form-control" id="Codigo_Asignatua" placeholder="Ingrese codigo de la signatra">
+                </div>
+                <div class="form-group">
+                    <label for="Nombre">Nombre Asignatura:</label>
+                    <input type="text" class="form-control" id="Dedicacion" placeholder="Ingrese el nombre de la asignatura">
+                </div>
+                <div class="form-group">
+                    <label for="Centro">Centro:</label>
+                    <input type="text" class="form-control" id="Centro" placeholder="Ingrese el Centro">
+                </div>
+                <button type="button" class="btn btn-primary">Modificar</button>
+            </form>
+        </div>
+
+
+        <div class="container">
+            <h2>Buscar Asignatura</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Codigo_Asignatua">Codigo Asignatura:</label>
+                    <input type="text" class="form-control" id="Codigo_Asignatua" placeholder="Ingrese codigo de la signatra">
+                </div>
+                <div class="form-group">
+                    <label for="Nombre">Nombre Asignatura:</label>
+                    <input type="text" class="form-control" id="Dedicacion" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="Centro">Centro:</label>
+                    <input type="text" class="form-control" id="Centro" placeholder="">
+                </div>
+                <button type="button" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Eliminar Asignatura</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Codigo_Asignatua">Codigo Asignatura:</label>
+                    <input type="text" class="form-control" id="Codigo_Asignatua" placeholder="Ingrese codigo de la signatra que va a eliminar">
+                </div>
+                <button type="button" class="btn btn-primary">Eliminar</button>
+            </form>
+        </div>
+    </div>
+    <div id="divImparte">
+        <div class="container">
+            <h1>Formularios imparte</h1>
+            <h2>Crear Imparte</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Nombre">Nombre Imparte:</label>
+                    <input type="text" class="form-control" id="Nombre_Imparte" placeholder="Ingrese nombre del imparte">
+                </div>
+                <div class="form-group">
+                    <label for="Codigo">Codigo Imparte:</label>
+                    <input type="text" class="form-control" id="Codigo" placeholder="Ingrese el Codigo del imparte">
+                </div>
+                <div class="form-group">
+                    <label for="Horas">Horas:</label>
+                    <input type="text" class="form-control" id="Horas" placeholder="Ingrese las horas">
+                </div>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Modificar Imparte</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Nombre">Nombre Imparte:</label>
+                    <input type="text" class="form-control" id="Nombre_Imparte" placeholder="Ingrese nombre del imparte">
+                </div>
+                <div class="form-group">
+                    <label for="Codigo">Codigo Imparte:</label>
+                    <input type="text" class="form-control" id="Codigo" placeholder="Ingrese el Codigo del imparte">
+                </div>
+                <div class="form-group">
+                    <label for="Horas">Horas:</label>
+                    <input type="text" class="form-control" id="Horas" placeholder="Ingrese las horas">
+                </div>
+                <button type="button" class="btn btn-primary">Modificar</button>
+            </form>
+        </div>
+
+
+        <div class="container">
+            <h2>Buscar Imparte</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Codigo">Codigo Imparte:</label>
+                    <input type="text" class="form-control" id="Codigo" placeholder="Ingrese el Codigo del imparte">
+                </div>
+                <div class="form-group">
+                    <label for="Codigo">Codigo Imparte:</label>
+                    <input type="text" class="form-control" id="Codigo" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="Horas">Horas:</label>
+                    <input type="text" class="form-control" id="Horas" placeholder="">
+                </div>
+                <button type="button" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <h2>Eliminar Imparte</h2>
+            <form>
+                <div class="form-group">
+                    <label for="Nombre">Codigo Nombre:</label>
+                    <input type="text" class="form-control" id="Nombre" placeholder="Ingrese el nombre del imparte que va a eliminar">
+                </div>
+                <button type="button" class="btn btn-primary">Eliminar</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+</body>

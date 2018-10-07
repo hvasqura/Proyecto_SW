@@ -1,0 +1,4 @@
+--insert into [dbo].[Profesor] values ('Profesor Girafales','Docente','Primaria')
+--insert into [dbo].[Asignatura] values (1,'Matematicas','Ciencias Basicas')
+--insert into [dbo].[Imparte] values ('Profesor Girafales',1,'40 horas')
+--insert into dbo.Usuario values ('Profesor Girafales','pgirafales','chavo')
